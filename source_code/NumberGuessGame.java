@@ -2,7 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class NumberGuessGame {
-
     final private static Scanner scanner = new Scanner(System.in);   // For taking input from the user
     final private static Random random = new Random();   // For choosing random values. Ex. guesses
 
@@ -74,6 +73,7 @@ public class NumberGuessGame {
 
             if (scanner.hasNextLong()) {   // Check input to make sure that it is an integer, loop again if not
                 long input = scanner.nextLong();
+                scanner.nextLine();
 
                 // Check to make sure that the input is between 2 and the largest storable integer
                 if (input >= 2 && input <= Integer.MAX_VALUE){
@@ -87,7 +87,7 @@ public class NumberGuessGame {
             }
             else {
                 System.out.println("Invalid entry. Please enter a valid number between 2 and " + Integer.MAX_VALUE);
-                scanner.next();   // Clear the buffer in the event that the input is not an integer
+                scanner.nextLine();   // Clear the buffer in the event that the input is not an integer
             }
         }
     }
@@ -100,10 +100,10 @@ public class NumberGuessGame {
         System.out.print("First Turn Belongs to: ");
 
         // Get input from the user, and then set it all to lowercase and remove leading and tailing spaces
-        String firstTurnChoice = scanner.nextLine().toLowerCase().strip();
+        String firstTurnChoice;
 
         // Make sure that the user enters a valid input. If not, clear the buffer and re-prompt
-        while (!firstTurnChoice.equals("computer") && !firstTurnChoice.equals("user")) {
+        while (true) {
 
             firstTurnChoice = scanner.nextLine().toLowerCase().strip();
 

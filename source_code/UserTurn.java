@@ -15,15 +15,17 @@ public class UserTurn {
         while (true) {
             System.out.print("Enter your guess: ");
             if (scanner.hasNextInt()) {
-                return scanner.nextInt();
+                int num = scanner.nextInt();
+                scanner.nextLine();
+                return num;
             }
             else {
                 System.out.println("Please enter a valid number");
                 scanner.next(); // Clear the buffer so that new input can be entered
             }
 
-            }
         }
+    }
 
     // Used to check the user's guess against the target number
     public boolean checkUserGuess(int guess){
